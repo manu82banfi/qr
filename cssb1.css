@@ -39,7 +39,7 @@ body::before {
     pointer-events: none;
     opacity: 0.055;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
-    z-index: 20;
+    z-index: 1;
 }
 
 .page {
@@ -199,26 +199,68 @@ body::before {
     inset: 0;
     overflow: hidden;
     pointer-events: none;
-    z-index: 1;
+    z-index: 0;
 }
 
 .hearts span {
     position: absolute;
-    bottom: -50px;
-    color: rgba(220, 150, 155, 0.22);
-    font-family: Arial, sans-serif;
-    font-size: 14px;
+    bottom: -34px;
+    width: 13px;
+    height: 13px;
+    background: rgba(220, 150, 155, 0.34);
+    transform: rotate(-45deg);
+    border-radius: 3px;
     animation: floatHeart linear infinite;
+    filter: drop-shadow(0 0 5px rgba(220, 150, 155, 0.10));
 }
 
-.hearts span:nth-child(1) { left: 8%;  animation-duration: 12s; animation-delay: 1s;  font-size: 12px; }
-.hearts span:nth-child(2) { left: 22%; animation-duration: 16s; animation-delay: 5s;  font-size: 19px; }
-.hearts span:nth-child(3) { left: 37%; animation-duration: 13s; animation-delay: 2s;  font-size: 10px; }
-.hearts span:nth-child(4) { left: 53%; animation-duration: 18s; animation-delay: 7s;  font-size: 16px; }
-.hearts span:nth-child(5) { left: 68%; animation-duration: 14s; animation-delay: 3s;  font-size: 11px; }
-.hearts span:nth-child(6) { left: 79%; animation-duration: 17s; animation-delay: 8s;  font-size: 20px; }
-.hearts span:nth-child(7) { left: 91%; animation-duration: 13s; animation-delay: 4s;  font-size: 13px; }
-.hearts span:nth-child(8) { left: 47%; animation-duration: 20s; animation-delay: 11s; font-size: 9px; }
+.hearts span::before,
+.hearts span::after {
+    content: "";
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    background: inherit;
+    border-radius: 50%;
+}
+
+.hearts span::before {
+    top: -6px;
+    left: 0;
+}
+
+.hearts span::after {
+    top: 0;
+    left: 6px;
+}
+
+.hearts span:nth-child(1) { left: 8%;  animation-duration: 12s; animation-delay: 1s;  --size: 10px; }
+.hearts span:nth-child(2) { left: 22%; animation-duration: 16s; animation-delay: 5s;  --size: 16px; }
+.hearts span:nth-child(3) { left: 37%; animation-duration: 13s; animation-delay: 2s;  --size: 8px; }
+.hearts span:nth-child(4) { left: 53%; animation-duration: 18s; animation-delay: 7s;  --size: 14px; }
+.hearts span:nth-child(5) { left: 68%; animation-duration: 14s; animation-delay: 3s;  --size: 9px; }
+.hearts span:nth-child(6) { left: 79%; animation-duration: 17s; animation-delay: 8s;  --size: 17px; }
+.hearts span:nth-child(7) { left: 91%; animation-duration: 13s; animation-delay: 4s;  --size: 11px; }
+.hearts span:nth-child(8) { left: 47%; animation-duration: 20s; animation-delay: 11s; --size: 7px; }
+
+.hearts span {
+    width: var(--size, 13px);
+    height: var(--size, 13px);
+}
+
+.hearts span::before,
+.hearts span::after {
+    width: var(--size, 13px);
+    height: var(--size, 13px);
+}
+
+.hearts span::before {
+    top: calc(var(--size, 13px) * -0.46);
+}
+
+.hearts span::after {
+    left: calc(var(--size, 13px) * 0.46);
+}
 
 @keyframes floatHeart {
     0% {
