@@ -1,23 +1,31 @@
+```css
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap');
+
+
+/* =========================================================
+   COLORI
+   ========================================================= */
 
 :root {
     --wine: #7a2430;
     --wine-dark: #43151d;
     --rose: #b85c68;
+
     --cream: #f7eee4;
     --paper: #fffaf4;
     --ink: #171314;
+
     --gold: #c39a62;
 
-    /* Quadretti */
-    --grid-line: rgba(195, 154, 98, 0.2);
-    --grid-size: 22px;
+    /* Quadretti del bigliettino */
+    --grid-line: rgba(122, 36, 48, 0.16);
+    --grid-size: 24px;
 }
 
 
-/* ==============================
+/* =========================================================
    RESET
-   ============================== */
+   ========================================================= */
 
 * {
     box-sizing: border-box;
@@ -25,44 +33,25 @@
     padding: 0;
 }
 
-
-/* ==============================
-   PAGINA
-   ============================== */
-
 html,
 body {
     width: 100%;
     height: 100%;
 }
 
+
+/* =========================================================
+   SFONDO
+   ========================================================= */
+
 body {
     overflow: hidden;
+
     color: var(--ink);
+
     font-family: 'Cormorant Garamond', Georgia, serif;
 
-    /*
-       Manteniamo il colore di sfondo
-       originale, ma aggiungiamo sopra
-       una griglia molto leggera.
-    */
-    background-color: #2b1719;
-
-    background-image:
-        linear-gradient(
-            rgba(255, 255, 255, 0.025),
-            rgba(255, 255, 255, 0.025)
-        ),
-        linear-gradient(
-            to right,
-            var(--grid-line) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            to bottom,
-            var(--grid-line) 1px,
-            transparent 1px
-        ),
+    background:
         radial-gradient(
             circle at 20% 15%,
             rgba(195, 154, 98, 0.16),
@@ -70,7 +59,7 @@ body {
         ),
         radial-gradient(
             circle at 85% 80%,
-            rgba(122, 36, 48, 0.18),
+            rgba(122, 36, 48, 0.20),
             transparent 32%
         ),
         linear-gradient(
@@ -79,29 +68,13 @@ body {
             #4a1b23 42%,
             #171314 100%
         );
-
-    background-size:
-        auto,
-        var(--grid-size) var(--grid-size),
-        var(--grid-size) var(--grid-size),
-        auto,
-        auto,
-        auto;
-
-    background-position:
-        0 0,
-        0 0,
-        0 0,
-        0 0,
-        0 0,
-        0 0;
 }
 
 
-/* Leggerissima texture della carta/sfondo */
-
+/* Leggera texture sullo sfondo */
 body::before {
     content: "";
+
     position: fixed;
     inset: 0;
 
@@ -110,15 +83,15 @@ body::before {
     opacity: 0.035;
 
     background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
 
     z-index: 1;
 }
 
 
-/* ==============================
-   CONTENITORE PRINCIPALE
-   ============================== */
+/* =========================================================
+   PAGINA
+   ========================================================= */
 
 .page {
     width: 100%;
@@ -129,6 +102,7 @@ body::before {
     justify-content: center;
 
     position: relative;
+
     z-index: 2;
 
     padding:
@@ -139,9 +113,9 @@ body::before {
 }
 
 
-/* ==============================
-   BIGLIETTO
-   ============================== */
+/* =========================================================
+   BIGLIETTINO / FOGLIO
+   ========================================================= */
 
 .card {
     position: relative;
@@ -152,28 +126,43 @@ body::before {
 
     text-align: center;
 
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(195, 154, 98, 0.10),
-            transparent 35%
-        ),
-        var(--paper);
+    /*
+       QUADRETTI:
+       sono applicati SOLO al foglio.
+       Lo sfondo esterno rimane completamente pulito.
+    */
+    background-color: var(--paper);
 
-    border: 1px solid rgba(195, 154, 98, 0.65);
+    background-image:
+        linear-gradient(
+            to right,
+            var(--grid-line) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            to bottom,
+            var(--grid-line) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        var(--grid-size) var(--grid-size),
+        var(--grid-size) var(--grid-size);
+
+    background-position:
+        0 0,
+        0 0;
+
+    border: 1px solid rgba(195, 154, 98, 0.70);
 
     border-radius: 3px;
 
     box-shadow:
         0 25px 70px rgba(0, 0, 0, 0.42),
-        0 4px 12px rgba(0, 0, 0, 0.18),
-        inset 0 0 0 8px rgba(122, 36, 48, 0.035);
+        0 4px 12px rgba(0, 0, 0, 0.18);
 
-    /*
-       Evitiamo il movimento verticale
-       per mantenere l'effetto "immagine".
-    */
     opacity: 0;
+
     transform: scale(0.985);
 
     transition:
@@ -181,15 +170,17 @@ body::before {
         transform 1.1s cubic-bezier(.2, .8, .2, 1);
 }
 
+
 .loaded .card {
     opacity: 1;
+
     transform: scale(1);
 }
 
 
-/* ==============================
+/* =========================================================
    ORNAMENTO SUPERIORE
-   ============================== */
+   ========================================================= */
 
 .ornament {
     display: flex;
@@ -226,13 +217,14 @@ body::before {
     color: var(--gold);
 
     font-style: normal;
+
     font-size: 13px;
 }
 
 
-/* ==============================
+/* =========================================================
    TITOLO
-   ============================== */
+   ========================================================= */
 
 .intro {
     margin-bottom: 28px;
@@ -241,19 +233,15 @@ body::before {
 
     font-family: 'Great Vibes', cursive;
 
-    font-size: clamp(
-        2.2rem,
-        9vw,
-        3.4rem
-    );
+    font-size: clamp(2.2rem, 9vw, 3.4rem);
 
     line-height: 1;
 }
 
 
-/* ==============================
+/* =========================================================
    TESTO
-   ============================== */
+   ========================================================= */
 
 .text {
     max-width: 535px;
@@ -264,11 +252,7 @@ body::before {
 .text p {
     margin-bottom: 23px;
 
-    font-size: clamp(
-        1.28rem,
-        4.5vw,
-        1.55rem
-    );
+    font-size: clamp(1.28rem, 4.5vw, 1.55rem);
 
     line-height: 1.62;
 
@@ -290,30 +274,21 @@ body::before {
 }
 
 
-/* ==============================
-   FRASE FINALE
-   ============================== */
+/* =========================================================
+   PARAGRAFO FINALE
+   ========================================================= */
 
 .ending {
     position: relative;
 
     margin-top: 30px !important;
 
-    padding:
-        25px
-        10px
-        5px;
+    padding: 25px 10px 5px;
 
     color: var(--wine-dark);
 
     font-weight: 600 !important;
 }
-
-
-/*
-   Al posto del cuoricino:
-   una piccola decorazione neutra.
-*/
 
 .ending::before {
     content: "✦";
@@ -330,9 +305,9 @@ body::before {
 }
 
 
-/* ==============================
+/* =========================================================
    ROSA NERA
-   ============================== */
+   ========================================================= */
 
 .black-rose {
     position: absolute;
@@ -363,9 +338,9 @@ body::before {
 }
 
 
-/* ==============================
+/* =========================================================
    SMARTPHONE
-   ============================== */
+   ========================================================= */
 
 @media (max-width: 520px) {
 
@@ -383,6 +358,14 @@ body::before {
             48px
             24px
             48px;
+
+        /*
+           Quadretti leggermente più piccoli
+           sul telefono per mantenere la pagina elegante.
+        */
+        background-size:
+            22px 22px,
+            22px 22px;
     }
 
     .ornament {
@@ -399,6 +382,7 @@ body::before {
 
     .text p {
         font-size: 1.28rem;
+
         line-height: 1.58;
 
         margin-bottom: 20px;
@@ -406,6 +390,7 @@ body::before {
 
     .ending {
         margin-top: 26px !important;
+
         padding-top: 22px;
     }
 
@@ -419,9 +404,9 @@ body::before {
 }
 
 
-/* ==============================
-   SCHERMI MOLTO BASSI
-   ============================== */
+/* =========================================================
+   SCHERMI BASSI
+   ========================================================= */
 
 @media (max-height: 680px) and (max-width: 520px) {
 
@@ -436,6 +421,10 @@ body::before {
             38px
             22px
             42px;
+
+        background-size:
+            21px 21px,
+            21px 21px;
     }
 
     .intro {
@@ -444,12 +433,15 @@ body::before {
 
     .text p {
         font-size: 1.18rem;
+
         line-height: 1.48;
+
         margin-bottom: 16px;
     }
 
     .ending {
         margin-top: 20px !important;
+
         padding-top: 18px;
     }
 
@@ -463,9 +455,9 @@ body::before {
 }
 
 
-/* ==============================
+/* =========================================================
    RIDUZIONE ANIMAZIONI
-   ============================== */
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -477,3 +469,4 @@ body::before {
         transition-duration: 0.01ms !important;
     }
 }
+```
