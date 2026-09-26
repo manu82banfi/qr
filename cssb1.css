@@ -2,36 +2,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap');
 
 
-/* =========================================================
-   COLORI
-   ========================================================= */
-
 :root {
     --wine: #7a2430;
     --wine-dark: #43151d;
     --rose: #b85c68;
 
-    --cream: #f7eee4;
+    /* Colori del bigliettino */
     --paper: #fffaf4;
     --ink: #171314;
-
     --gold: #c39a62;
 
-    /* Quadretti del bigliettino */
+    /* Quadretti del foglio */
     --grid-line: rgba(122, 36, 48, 0.16);
     --grid-size: 24px;
 }
 
 
-/* =========================================================
+/* =========================
    RESET
-   ========================================================= */
+========================= */
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 
 html,
 body {
@@ -40,9 +36,9 @@ body {
 }
 
 
-/* =========================================================
+/* =========================
    SFONDO
-   ========================================================= */
+========================= */
 
 body {
     overflow: hidden;
@@ -51,27 +47,24 @@ body {
 
     font-family: 'Cormorant Garamond', Georgia, serif;
 
+    /*
+        Sfondo bordeaux pulito.
+        NESSUN quadretto qui.
+        NESSUN cuore.
+    */
     background:
-        radial-gradient(
-            circle at 20% 15%,
-            rgba(195, 154, 98, 0.16),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 85% 80%,
-            rgba(122, 36, 48, 0.20),
-            transparent 32%
-        ),
         linear-gradient(
             135deg,
             #2b1719 0%,
-            #4a1b23 42%,
+            #4a1b23 45%,
             #171314 100%
         );
 }
 
 
-/* Leggera texture sullo sfondo */
+/* Leggerissima texture dello sfondo,
+   quasi impercettibile */
+
 body::before {
     content: "";
 
@@ -80,18 +73,18 @@ body::before {
 
     pointer-events: none;
 
-    opacity: 0.035;
+    opacity: 0.025;
 
     background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
 
-    z-index: 1;
+    z-index: 0;
 }
 
 
-/* =========================================================
+/* =========================
    PAGINA
-   ========================================================= */
+========================= */
 
 .page {
     width: 100%;
@@ -102,7 +95,6 @@ body::before {
     justify-content: center;
 
     position: relative;
-
     z-index: 2;
 
     padding:
@@ -113,23 +105,25 @@ body::before {
 }
 
 
-/* =========================================================
-   BIGLIETTINO / FOGLIO
-   ========================================================= */
+/* =========================
+   BIGLIETTINO
+========================= */
 
 .card {
     position: relative;
 
     width: min(100%, 650px);
 
-    padding: 58px 42px 52px;
+    padding: 58px 42px 60px;
 
     text-align: center;
 
     /*
-       QUADRETTI:
-       sono applicati SOLO al foglio.
-       Lo sfondo esterno rimane completamente pulito.
+        Qui sono i quadretti.
+
+        Il foglio rimane color crema,
+        ma il reticolo è abbastanza visibile
+        da dare davvero l'effetto "quaderno".
     */
     background-color: var(--paper);
 
@@ -153,7 +147,7 @@ body::before {
         0 0,
         0 0;
 
-    border: 1px solid rgba(195, 154, 98, 0.70);
+    border: 1px solid rgba(195, 154, 98, 0.65);
 
     border-radius: 3px;
 
@@ -173,17 +167,17 @@ body::before {
 
 .loaded .card {
     opacity: 1;
-
     transform: scale(1);
 }
 
 
-/* =========================================================
-   ORNAMENTO SUPERIORE
-   ========================================================= */
+/* =========================
+   DECORAZIONE SUPERIORE
+========================= */
 
 .ornament {
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -191,6 +185,7 @@ body::before {
 
     margin-bottom: 18px;
 }
+
 
 .ornament span {
     width: 65px;
@@ -204,6 +199,7 @@ body::before {
         );
 }
 
+
 .ornament span:last-child {
     background:
         linear-gradient(
@@ -212,6 +208,7 @@ body::before {
             var(--gold)
         );
 }
+
 
 .ornament i {
     color: var(--gold);
@@ -222,9 +219,9 @@ body::before {
 }
 
 
-/* =========================================================
+/* =========================
    TITOLO
-   ========================================================= */
+========================= */
 
 .intro {
     margin-bottom: 28px;
@@ -239,15 +236,16 @@ body::before {
 }
 
 
-/* =========================================================
+/* =========================
    TESTO
-   ========================================================= */
+========================= */
 
 .text {
     max-width: 535px;
 
     margin: 0 auto;
 }
+
 
 .text p {
     margin-bottom: 23px;
@@ -261,9 +259,11 @@ body::before {
     letter-spacing: 0.01em;
 }
 
+
 .text p:last-child {
     margin-bottom: 0;
 }
+
 
 .text em {
     color: var(--wine);
@@ -274,9 +274,9 @@ body::before {
 }
 
 
-/* =========================================================
+/* =========================
    PARAGRAFO FINALE
-   ========================================================= */
+========================= */
 
 .ending {
     position: relative;
@@ -289,6 +289,7 @@ body::before {
 
     font-weight: 600 !important;
 }
+
 
 .ending::before {
     content: "✦";
@@ -305,9 +306,9 @@ body::before {
 }
 
 
-/* =========================================================
+/* =========================
    ROSA NERA
-   ========================================================= */
+========================= */
 
 .black-rose {
     position: absolute;
@@ -330,6 +331,7 @@ body::before {
         );
 }
 
+
 .black-rose svg {
     display: block;
 
@@ -338,9 +340,9 @@ body::before {
 }
 
 
-/* =========================================================
+/* =========================
    SMARTPHONE
-   ========================================================= */
+========================= */
 
 @media (max-width: 520px) {
 
@@ -350,6 +352,7 @@ body::before {
             18px;
     }
 
+
     .card {
         width: 100%;
         max-width: 390px;
@@ -357,28 +360,24 @@ body::before {
         padding:
             48px
             24px
-            48px;
-
-        /*
-           Quadretti leggermente più piccoli
-           sul telefono per mantenere la pagina elegante.
-        */
-        background-size:
-            22px 22px,
-            22px 22px;
+            54px;
     }
+
 
     .ornament {
         margin-bottom: 16px;
     }
 
+
     .ornament span {
         width: 48px;
     }
 
+
     .intro {
         margin-bottom: 23px;
     }
+
 
     .text p {
         font-size: 1.28rem;
@@ -388,11 +387,13 @@ body::before {
         margin-bottom: 20px;
     }
 
+
     .ending {
         margin-top: 26px !important;
 
         padding-top: 22px;
     }
+
 
     .black-rose {
         right: 13px;
@@ -404,9 +405,9 @@ body::before {
 }
 
 
-/* =========================================================
+/* =========================
    SCHERMI BASSI
-   ========================================================= */
+========================= */
 
 @media (max-height: 680px) and (max-width: 520px) {
 
@@ -416,20 +417,19 @@ body::before {
             15px;
     }
 
+
     .card {
         padding:
             38px
             22px
-            42px;
-
-        background-size:
-            21px 21px,
-            21px 21px;
+            48px;
     }
+
 
     .intro {
         margin-bottom: 18px;
     }
+
 
     .text p {
         font-size: 1.18rem;
@@ -439,11 +439,13 @@ body::before {
         margin-bottom: 16px;
     }
 
+
     .ending {
         margin-top: 20px !important;
 
         padding-top: 18px;
     }
+
 
     .black-rose {
         width: 42px;
@@ -455,9 +457,9 @@ body::before {
 }
 
 
-/* =========================================================
+/* =========================
    RIDUZIONE ANIMAZIONI
-   ========================================================= */
+========================= */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -465,7 +467,9 @@ body::before {
     *::before,
     *::after {
         animation-duration: 0.01ms !important;
+
         animation-iteration-count: 1 !important;
+
         transition-duration: 0.01ms !important;
     }
 }
