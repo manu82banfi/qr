@@ -3,24 +3,21 @@
 
 
 :root {
+
     --wine: #7a2430;
     --wine-dark: #43151d;
     --rose: #b85c68;
 
-    /* Foglio */
     --paper: #fffdf7;
     --ink: #171314;
     --gold: #c39a62;
 
-    /* Quadretti */
-    --grid-line: rgba(122, 36, 48, 0.25);
-    --grid-size: 24px;
 }
 
 
-/* =========================
+/* =====================================================
    RESET
-========================= */
+===================================================== */
 
 * {
     box-sizing: border-box;
@@ -31,38 +28,85 @@
 
 html,
 body {
+
     width: 100%;
     height: 100%;
+
 }
 
 
-/* =========================
+/* =====================================================
    SFONDO
-========================= */
+===================================================== */
 
 body {
+
     overflow: hidden;
 
     color: var(--ink);
 
-    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-family:
+        'Cormorant Garamond',
+        Georgia,
+        serif;
 
-    background:
-        linear-gradient(
-            135deg,
-            #2b1719 0%,
-            #4a1b23 45%,
-            #171314 100%
-        );
+    /*
+        Il colore dello sfondo viene animato
+        tramite background-color.
+    */
+
+    background-color: #241014;
+
+    animation:
+        backgroundPulse 9s ease-in-out infinite;
+
 }
 
 
-/* Texture leggerissima */
+/*
+    PULSAZIONE DELLO SFONDO
+
+    Parte molto scuro
+    → diventa più chiaro
+    → torna lentamente scuro
+
+    Il movimento è volutamente lento
+    per evitare un effetto "lampeggio".
+*/
+
+@keyframes backgroundPulse {
+
+    0% {
+
+        background-color: #241014;
+
+    }
+
+    50% {
+
+        background-color: #71323e;
+
+    }
+
+    100% {
+
+        background-color: #241014;
+
+    }
+
+}
+
+
+/* =====================================================
+   TEXTURE LEGGERISSIMA
+===================================================== */
 
 body::before {
+
     content: "";
 
     position: fixed;
+
     inset: 0;
 
     pointer-events: none;
@@ -73,398 +117,579 @@ body::before {
         url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
 
     z-index: 0;
+
 }
 
 
-/* =========================
+/* =====================================================
    PAGINA
-========================= */
+===================================================== */
 
 .page {
+
     width: 100%;
+
     height: 100svh;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     position: relative;
+
     z-index: 2;
 
+    /*
+        Margini più generosi su smartphone.
+        Il contenuto rimane sempre centrato.
+    */
+
     padding:
-        max(42px, env(safe-area-inset-top))
-        max(24px, env(safe-area-inset-right))
-        max(42px, env(safe-area-inset-bottom))
-        max(24px, env(safe-area-inset-left));
+        max(34px, env(safe-area-inset-top))
+        max(20px, env(safe-area-inset-right))
+        max(34px, env(safe-area-inset-bottom))
+        max(20px, env(safe-area-inset-left));
+
 }
 
 
-/* =========================
+/* =====================================================
    BIGLIETTINO
-========================= */
+===================================================== */
 
 .card {
+
     position: relative;
 
     width: min(100%, 650px);
 
-    padding: 58px 42px 60px;
+    /*
+        Più spazio verticale per dare
+        l'impressione di un vero bigliettino.
+    */
+
+    padding:
+        58px
+        42px
+        70px;
 
     text-align: center;
 
-    /*
-        FOGLIO CHIARO
-    */
+
+    /* Foglio */
+
     background-color: #ecf2bd;
 
-    /*
-        QUADRETTI VISIBILI
-    */
+
+    /* Quadretti */
+
     background-image:
+
         linear-gradient(
             rgba(166, 188, 224, 0.25) 1px,
             transparent 1px
         ),
+
         linear-gradient(
             90deg,
             rgba(166, 188, 224, 0.25) 1px,
             transparent 1px
         );
 
+
     background-size:
         24px 24px;
+
 
     background-position:
         0 0,
         0 0;
 
-    border: 1px solid rgba(195, 154, 98, 0.8);
+
+    border:
+        1px solid
+        rgba(195, 154, 98, 0.8);
+
 
     border-radius: 3px;
 
-    box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.42),
-        0 4px 12px rgba(0, 0, 0, 0.18);
 
-    /*
-        IMPORTANTE:
-        il foglio è visibile SEMPRE.
-        Nessuna dipendenza da JavaScript.
-    */
+    box-shadow:
+
+        0 25px 70px
+        rgba(0, 0, 0, 0.42),
+
+        0 4px 12px
+        rgba(0, 0, 0, 0.18);
+
+
     opacity: 1;
 
     transform: scale(1);
+
 }
 
 
-/* =========================
-   DECORAZIONE SUPERIORE
-========================= */
-
-.ornament {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 12px;
-
-    margin-bottom: 18px;
-}
-
-
-.ornament span {
-    width: 65px;
-    height: 1px;
-
-    background:
-        linear-gradient(
-            to right,
-            transparent,
-            var(--gold)
-        );
-}
-
-
-.ornament span:last-child {
-    background:
-        linear-gradient(
-            to left,
-            transparent,
-            var(--gold)
-        );
-}
-
-
-.ornament i {
-    color: var(--gold);
-
-    font-style: normal;
-
-    font-size: 13px;
-}
-
-
-/* =========================
-   TITOLO
-========================= */
-
-.intro {
-    margin-bottom: 28px;
-
-    color: var(--wine);
-
-    font-family: 'Great Vibes', cursive;
-
-    font-size: clamp(2.2rem, 9vw, 3.4rem);
-
-    line-height: 1;
-}
-
-
-/* =========================
+/* =====================================================
    TESTO
-========================= */
+===================================================== */
 
 .text {
+
     max-width: 535px;
 
     margin: 0 auto;
+
 }
 
 
 .text p {
-    margin-bottom: 23px;
 
-    font-size: clamp(1.28rem, 4.5vw, 1.55rem);
+    margin-bottom: 0;
+
+    font-size:
+        clamp(1.28rem, 4.5vw, 1.55rem);
 
     line-height: 1.62;
 
-    /*
-        TESTO NORMALE
-    */
     font-weight: 400;
 
     letter-spacing: 0.01em;
+
 }
 
 
 .text p:last-child {
+
     margin-bottom: 0;
+
 }
 
 
 .text em {
+
     color: var(--wine);
 
     font-weight: 400;
 
     font-style: italic;
+
 }
 
 
-/* =========================
-   PARAGRAFO FINALE
-========================= */
+/* =====================================================
+   CUORE CENTRALE
+===================================================== */
 
-.ending {
-    position: relative;
+.heart-divider {
 
-    margin-top: 30px !important;
+    width: 100%;
 
-    padding: 25px 10px 5px;
+    display: flex;
 
-    color: var(--wine-dark);
+    justify-content: center;
+
+    align-items: center;
 
     /*
-        NESSUN GRASSETTO
+        Spazio tra i due blocchi di testo.
     */
-    font-weight: 400 !important;
+
+    margin:
+
+        27px
+        0
+        25px;
+
 }
 
 
-.ending::before {
-    content: "✦";
+/*
+    Cuore vero e proprio.
+
+    È volutamente più "panciuto"
+    rispetto al classico ♥.
+*/
+
+.heart-divider span {
+
+    position: relative;
 
     display: block;
 
-    margin-bottom: 9px;
+    width: 19px;
 
-    color: var(--gold);
+    height: 19px;
 
-    font-family: Georgia, serif;
+    background: var(--wine);
 
-    font-size: 15px;
+    transform:
+        rotate(-45deg);
+
+    border-radius:
+        3px 0 3px 3px;
+
 }
 
 
-/* =========================
-   ROSA NERA
-========================= */
+/*
+    Parte superiore sinistra
+*/
 
-.black-rose {
+.heart-divider span::before {
+
+    content: "";
+
     position: absolute;
 
+    width: 19px;
+
+    height: 19px;
+
+    background: var(--wine);
+
+    border-radius: 50%;
+
+    top: -9px;
+
+    left: 0;
+
+}
+
+
+/*
+    Parte superiore destra
+*/
+
+.heart-divider span::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 19px;
+
+    height: 19px;
+
+    background: var(--wine);
+
+    border-radius: 50%;
+
+    top: 0;
+
+    left: 9px;
+
+}
+
+
+/* =====================================================
+   PARAGRAFO FINALE
+===================================================== */
+
+.ending {
+
+    position: relative;
+
+    margin-top: 0 !important;
+
+    padding:
+        0
+        10px
+        5px;
+
+    color: var(--wine-dark);
+
+    font-weight: 400 !important;
+
+}
+
+
+/* =====================================================
+   ROSA NERA
+===================================================== */
+
+.black-rose {
+
+    position: absolute;
+
+    /*
+        Più in basso rispetto alla versione precedente.
+    */
+
     right: 18px;
-    bottom: 12px;
+
+    bottom: 7px;
 
     width: 58px;
+
     height: 76px;
 
     opacity: 0.90;
 
     pointer-events: none;
 
-    transform: rotate(-5deg);
+    transform:
+        rotate(-5deg);
 
     filter:
         drop-shadow(
-            0 2px 3px rgba(0, 0, 0, 0.18)
+            0 2px 3px
+            rgba(0, 0, 0, 0.18)
         );
+
 }
 
 
 .black-rose svg {
+
     display: block;
 
     width: 100%;
+
     height: 100%;
+
 }
 
 
-/* =========================
+/* =====================================================
    SMARTPHONE
-========================= */
+===================================================== */
 
 @media (max-width: 520px) {
 
+
     .page {
+
+        /*
+            Più margine laterale e verticale.
+            Aiuta anche a evitare che il biglietto
+            sembri "incollato" allo schermo.
+        */
+
         padding:
-            42px 18px;
+            34px 18px;
+
     }
 
 
     .card {
+
         width: 100%;
+
         max-width: 390px;
 
         padding:
-            48px 24px 54px;
+            46px
+            23px
+            78px;
+
     }
 
 
-    .ornament {
-        margin-bottom: 16px;
-    }
+    .text {
 
+        max-width: 100%;
 
-    .ornament span {
-        width: 48px;
-    }
-
-
-    .intro {
-        margin-bottom: 23px;
     }
 
 
     .text p {
+
         font-size: 1.28rem;
 
         line-height: 1.58;
 
-        margin-bottom: 20px;
+        margin-bottom: 0;
 
         font-weight: 400;
+
     }
 
+
+    /* ---------------------------------------------
+       CUORE
+    --------------------------------------------- */
+
+    .heart-divider {
+
+        margin:
+            25px
+            0
+            23px;
+
+    }
+
+
+    .heart-divider span,
+    .heart-divider span::before,
+    .heart-divider span::after {
+
+        width: 18px;
+
+        height: 18px;
+
+    }
+
+
+    .heart-divider span::before {
+
+        top: -8px;
+
+    }
+
+
+    .heart-divider span::after {
+
+        left: 8px;
+
+    }
+
+
+    /* ---------------------------------------------
+       PARAGRAFO FINALE
+    --------------------------------------------- */
 
     .ending {
-        margin-top: 26px !important;
 
-        padding-top: 22px;
+        padding:
+            0
+            8px
+            5px;
 
         font-weight: 400 !important;
+
     }
 
+
+    /* ---------------------------------------------
+       ROSA
+    --------------------------------------------- */
 
     .black-rose {
-        right: 13px;
-        bottom: 9px;
+
+        right: 12px;
+
+        /*
+            Abbassata ulteriormente su smartphone.
+        */
+
+        bottom: 2px;
 
         width: 48px;
+
         height: 64px;
+
     }
+
 }
 
 
-/* =========================
+/* =====================================================
    SCHERMI BASSI
-========================= */
+===================================================== */
 
 @media (max-height: 680px) and (max-width: 520px) {
 
+
     .page {
+
         padding:
-            30px 15px;
+            25px 15px;
+
     }
 
 
     .card {
+
         padding:
-            38px 22px 48px;
-    }
+            36px
+            21px
+            70px;
 
-
-    .intro {
-        margin-bottom: 18px;
     }
 
 
     .text p {
+
         font-size: 1.18rem;
 
         line-height: 1.48;
 
-        margin-bottom: 16px;
-
-        font-weight: 400;
     }
 
 
-    .ending {
-        margin-top: 20px !important;
+    .heart-divider {
 
-        padding-top: 18px;
+        margin:
+            19px
+            0
+            18px;
 
-        font-weight: 400 !important;
+    }
+
+
+    .heart-divider span,
+    .heart-divider span::before,
+    .heart-divider span::after {
+
+        width: 16px;
+
+        height: 16px;
+
+    }
+
+
+    .heart-divider span::before {
+
+        top: -7px;
+
+    }
+
+
+    .heart-divider span::after {
+
+        left: 7px;
+
     }
 
 
     .black-rose {
+
         width: 42px;
+
         height: 56px;
 
-        right: 10px;
-        bottom: 7px;
+        right: 9px;
+
+        bottom: 1px;
+
     }
+
 }
 
 
-/* =========================
+/* =====================================================
    RIDUZIONE ANIMAZIONI
-========================= */
+===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
     *,
     *::before,
     *::after {
-        animation-duration: 0.01ms !important;
 
-        animation-iteration-count: 1 !important;
+        animation-duration:
+            0.01ms !important;
 
-        transition-duration: 0.01ms !important;
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+
     }
+
 }
 ```
