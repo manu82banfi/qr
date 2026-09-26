@@ -1,10 +1,14 @@
-```html
 <!DOCTYPE html>
 <html lang="it">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
     <meta name="theme-color" content="#43151d">
 
     <title>Quel giorno</title>
@@ -12,20 +16,28 @@
     <link rel="stylesheet" href="cssb1.css">
 </head>
 
+
 <body>
 
     <main class="page">
 
         <section class="card">
 
+            <!-- DECORAZIONE SUPERIORE -->
             <div class="ornament">
                 <span></span>
                 <i>✦</i>
                 <span></span>
             </div>
 
-            <p class="intro">Quel giorno</p>
 
+            <!-- TITOLO -->
+            <p class="intro">
+                Quel giorno
+            </p>
+
+
+            <!-- TESTO -->
             <div class="text">
 
                 <p>
@@ -43,12 +55,19 @@
 
             </div>
 
-            <!-- Rosa nera -->
-            <div class="black-rose" aria-hidden="true">
 
-                <svg viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+            <!-- ROSA NERA -->
+            <div
+                class="black-rose"
+                aria-hidden="true"
+            >
 
-                    <!-- Gambo -->
+                <svg
+                    viewBox="0 0 100 130"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+
+                    <!-- GAMBO -->
                     <path
                         d="M50 65 C48 82 51 100 45 124"
                         fill="none"
@@ -57,53 +76,70 @@
                         stroke-linecap="round"
                     />
 
-                    <!-- Foglia sinistra -->
+
+                    <!-- FOGLIA SINISTRA -->
                     <path
-                        d="M48 96 C37 87 27 90 25 99
-                           C33 102 41 101 48 96Z"
+                        d="
+                            M48 96
+                            C37 87 27 90 25 99
+                            C33 102 41 101 48 96Z
+                        "
                         fill="#111"
                     />
 
-                    <!-- Foglia destra -->
+
+                    <!-- FOGLIA DESTRA -->
                     <path
-                        d="M48 108 C58 99 67 102 70 110
-                           C61 113 54 112 48 108Z"
+                        d="
+                            M48 108
+                            C58 99 67 102 70 110
+                            C61 113 54 112 48 108Z
+                        "
                         fill="#111"
                     />
 
-                    <!-- Rosa esterna -->
+
+                    <!-- ROSA ESTERNA -->
                     <path
-                        d="M50 17
-                           C36 7 19 16 21 32
-                           C8 38 14 55 28 57
-                           C27 72 45 79 55 67
-                           C70 73 83 61 76 48
-                           C89 37 78 20 63 23
-                           C61 10 52 9 50 17Z"
+                        d="
+                            M50 17
+                            C36 7 19 16 21 32
+                            C8 38 14 55 28 57
+                            C27 72 45 79 55 67
+                            C70 73 83 61 76 48
+                            C89 37 78 20 63 23
+                            C61 10 52 9 50 17Z
+                        "
                         fill="#111"
                     />
 
-                    <!-- Petali interni -->
+
+                    <!-- PETALI INTERNI -->
                     <path
-                        d="M50 22
-                           C40 16 31 22 35 31
-                           C25 31 24 41 34 44
-                           C28 51 37 59 45 53
-                           C48 63 59 60 58 51
-                           C68 55 74 46 66 40
-                           C74 34 66 25 58 29
-                           C59 20 53 18 50 22Z"
+                        d="
+                            M50 22
+                            C40 16 31 22 35 31
+                            C25 31 24 41 34 44
+                            C28 51 37 59 45 53
+                            C48 63 59 60 58 51
+                            C68 55 74 46 66 40
+                            C74 34 66 25 58 29
+                            C59 20 53 18 50 22Z
+                        "
                         fill="#252525"
                     />
 
-                    <!-- Centro -->
+
+                    <!-- CENTRO -->
                     <path
-                        d="M50 28
-                           C43 25 39 31 44 36
-                           C37 39 41 47 48 45
-                           C49 52 58 50 57 43
-                           C64 42 63 34 57 34
-                           C58 28 53 26 50 28Z"
+                        d="
+                            M50 28
+                            C43 25 39 31 44 36
+                            C37 39 41 47 48 45
+                            C49 52 58 50 57 43
+                            C64 42 63 34 57 34
+                            C58 28 53 26 50 28Z
+                        "
                         fill="#050505"
                     />
 
@@ -115,13 +151,6 @@
 
     </main>
 
-    <script>
-        window.addEventListener("load", () => {
-            document.body.classList.add("loaded");
-        });
-    </script>
-
 </body>
 
 </html>
-```
