@@ -8,7 +8,7 @@
     --rose: #b85c68;
 
     /* Colori del bigliettino */
-    --paper: yellow;
+    --paper: #fffaf4;
     --ink: #171314;
     --gold: #c39a62;
 
@@ -125,27 +125,8 @@ body::before {
         ma il reticolo è abbastanza visibile
         da dare davvero l'effetto "quaderno".
     */
-    background-color: var(--paper);
 
-    background-image:
-        linear-gradient(
-            to right,
-            var(--grid-line) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            to bottom,
-            var(--grid-line) 1px,
-            transparent 1px
-        );
-
-    background-size:
-        var(--grid-size) var(--grid-size),
-        var(--grid-size) var(--grid-size);
-
-    background-position:
-        0 0,
-        0 0;
+background: #fffaf4;
 
     border: 1px solid rgba(195, 154, 98, 0.65);
 
