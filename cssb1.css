@@ -1,28 +1,26 @@
+```css
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap');
 
 
-/* =========================================================
-   VARIABILI
-========================================================= */
-
 :root {
-
     --wine: #7a2430;
     --wine-dark: #43151d;
     --rose: #b85c68;
 
+    /* Colori del bigliettino */
     --paper: #fffaf4;
     --ink: #171314;
     --gold: #c39a62;
 
+    /* Quadretti del foglio */
     --grid-line: rgba(122, 36, 48, 0.16);
     --grid-size: 24px;
 }
 
 
-/* =========================================================
+/* =========================
    RESET
-========================================================= */
+========================= */
 
 * {
     box-sizing: border-box;
@@ -38,24 +36,22 @@ body {
 }
 
 
-/* =========================================================
-   BODY / SFONDO
-========================================================= */
+/* =========================
+   SFONDO
+========================= */
 
 body {
-
-    width: 100%;
-    min-height: 100%;
-
     overflow: hidden;
 
     color: var(--ink);
 
-    font-family:
-        'Cormorant Garamond',
-        Georgia,
-        serif;
+    font-family: 'Cormorant Garamond', Georgia, serif;
 
+    /*
+        Sfondo bordeaux pulito.
+        NESSUN quadretto qui.
+        NESSUN cuore.
+    */
     background:
         linear-gradient(
             135deg,
@@ -66,175 +62,120 @@ body {
 }
 
 
-/* =========================================================
-   TEXTURE LEGGERISSIMA
-========================================================= */
+/* Leggerissima texture dello sfondo,
+   quasi impercettibile */
 
 body::before {
-
     content: "";
 
     position: fixed;
-
     inset: 0;
 
     pointer-events: none;
-
-    z-index: 0;
 
     opacity: 0.025;
 
     background-image:
         url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+
+    z-index: 0;
 }
 
 
-/* =========================================================
+/* =========================
    PAGINA
-========================================================= */
+========================= */
 
 .page {
-
-    position: relative;
-
-    z-index: 2;
-
     width: 100%;
     height: 100svh;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
+
+    position: relative;
+    z-index: 2;
 
     padding:
         max(42px, env(safe-area-inset-top))
         max(24px, env(safe-area-inset-right))
         max(42px, env(safe-area-inset-bottom))
         max(24px, env(safe-area-inset-left));
-
-    overflow: hidden;
 }
 
 
-/* =========================================================
+/* =========================
    BIGLIETTINO
-========================================================= */
+========================= */
 
 .card {
-
     position: relative;
-
-    z-index: 3;
 
     width: min(100%, 650px);
 
-    padding:
-        58px
-        42px
-        60px;
+    padding: 58px 42px 60px;
 
     text-align: center;
 
     /*
-       IMPORTANTE:
+        Qui sono i quadretti.
 
-       Il colore del foglio è dichiarato direttamente
-       come background-color.
-
-       I quadretti vengono applicati sopra,
-       ma sono trasparenti.
+        Il foglio rimane color crema,
+        ma il reticolo è abbastanza visibile
+        da dare davvero l'effetto "quaderno".
     */
-
-    background-color: #fffaf4;
+    background-color: var(--paper);
 
     background-image:
-
         linear-gradient(
             to right,
-            rgba(122, 36, 48, 0.16) 1px,
+            var(--grid-line) 1px,
             transparent 1px
         ),
-
         linear-gradient(
             to bottom,
-            rgba(122, 36, 48, 0.16) 1px,
+            var(--grid-line) 1px,
             transparent 1px
         );
 
     background-size:
-        24px 24px,
-        24px 24px;
+        var(--grid-size) var(--grid-size),
+        var(--grid-size) var(--grid-size);
 
     background-position:
         0 0,
         0 0;
 
-    background-repeat:
-        repeat,
-        repeat;
-
-    border:
-        1px solid rgba(195, 154, 98, 0.65);
+    border: 1px solid rgba(195, 154, 98, 0.65);
 
     border-radius: 3px;
 
     box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.42),
+        0 4px 12px rgba(0, 0, 0, 0.18);
 
-        0 25px 70px
-        rgba(0, 0, 0, 0.42),
+    opacity: 0;
 
-        0 4px 12px
-        rgba(0, 0, 0, 0.18);
+    transform: scale(0.985);
 
-    /*
-       La card è SEMPRE visibile.
-       L'animazione non dipende da JavaScript.
-    */
+    transition:
+        opacity 1.1s ease,
+        transform 1.1s cubic-bezier(.2, .8, .2, 1);
+}
 
+
+.loaded .card {
     opacity: 1;
-
     transform: scale(1);
-
-    animation:
-        cardAppear 1s
-        cubic-bezier(.2, .8, .2, 1)
-        both;
 }
 
 
-/* =========================================================
-   ANIMAZIONE INGRESSO
-========================================================= */
-
-@keyframes cardAppear {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            scale(0.985)
-            translateY(6px);
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            scale(1)
-            translateY(0);
-    }
-}
-
-
-/* =========================================================
+/* =========================
    DECORAZIONE SUPERIORE
-========================================================= */
+========================= */
 
 .ornament {
-
     display: flex;
 
     align-items: center;
@@ -247,9 +188,7 @@ body::before {
 
 
 .ornament span {
-
     width: 65px;
-
     height: 1px;
 
     background:
@@ -262,7 +201,6 @@ body::before {
 
 
 .ornament span:last-child {
-
     background:
         linear-gradient(
             to left,
@@ -273,59 +211,46 @@ body::before {
 
 
 .ornament i {
-
     color: var(--gold);
 
     font-style: normal;
 
     font-size: 13px;
-
-    line-height: 1;
 }
 
 
-/* =========================================================
+/* =========================
    TITOLO
-========================================================= */
+========================= */
 
 .intro {
-
     margin-bottom: 28px;
 
     color: var(--wine);
 
-    font-family:
-        'Great Vibes',
-        cursive;
+    font-family: 'Great Vibes', cursive;
 
-    font-size:
-        clamp(2.2rem, 9vw, 3.4rem);
+    font-size: clamp(2.2rem, 9vw, 3.4rem);
 
     line-height: 1;
 }
 
 
-/* =========================================================
+/* =========================
    TESTO
-========================================================= */
+========================= */
 
 .text {
-
-    width: 100%;
-
     max-width: 535px;
 
-    margin:
-        0 auto;
+    margin: 0 auto;
 }
 
 
 .text p {
-
     margin-bottom: 23px;
 
-    font-size:
-        clamp(1.28rem, 4.5vw, 1.55rem);
+    font-size: clamp(1.28rem, 4.5vw, 1.55rem);
 
     line-height: 1.62;
 
@@ -336,13 +261,11 @@ body::before {
 
 
 .text p:last-child {
-
     margin-bottom: 0;
 }
 
 
 .text em {
-
     color: var(--wine);
 
     font-weight: 700;
@@ -351,20 +274,16 @@ body::before {
 }
 
 
-/* =========================================================
+/* =========================
    PARAGRAFO FINALE
-========================================================= */
+========================= */
 
 .ending {
-
     position: relative;
 
     margin-top: 30px !important;
 
-    padding:
-        25px
-        10px
-        5px;
+    padding: 25px 10px 5px;
 
     color: var(--wine-dark);
 
@@ -373,7 +292,6 @@ body::before {
 
 
 .ending::before {
-
     content: "✦";
 
     display: block;
@@ -388,12 +306,11 @@ body::before {
 }
 
 
-/* =========================================================
+/* =========================
    ROSA NERA
-========================================================= */
+========================= */
 
 .black-rose {
-
     position: absolute;
 
     right: 18px;
@@ -410,14 +327,12 @@ body::before {
 
     filter:
         drop-shadow(
-            0 2px 3px
-            rgba(0, 0, 0, 0.18)
+            0 2px 3px rgba(0, 0, 0, 0.18)
         );
 }
 
 
 .black-rose svg {
-
     display: block;
 
     width: 100%;
@@ -425,20 +340,13 @@ body::before {
 }
 
 
-/* =========================================================
+/* =========================
    SMARTPHONE
-========================================================= */
+========================= */
 
 @media (max-width: 520px) {
 
     .page {
-
-        /*
-           Più spazio ai bordi,
-           così si vede meglio il bordeaux
-           attorno al bigliettino.
-        */
-
         padding:
             42px
             18px;
@@ -446,9 +354,7 @@ body::before {
 
 
     .card {
-
         width: 100%;
-
         max-width: 390px;
 
         padding:
@@ -459,32 +365,21 @@ body::before {
 
 
     .ornament {
-
         margin-bottom: 16px;
     }
 
 
     .ornament span {
-
         width: 48px;
     }
 
 
     .intro {
-
         margin-bottom: 23px;
-
-        font-size:
-            clamp(
-                2.25rem,
-                10vw,
-                3.2rem
-            );
     }
 
 
     .text p {
-
         font-size: 1.28rem;
 
         line-height: 1.58;
@@ -494,7 +389,6 @@ body::before {
 
 
     .ending {
-
         margin-top: 26px !important;
 
         padding-top: 22px;
@@ -502,7 +396,6 @@ body::before {
 
 
     .black-rose {
-
         right: 13px;
         bottom: 9px;
 
@@ -512,14 +405,13 @@ body::before {
 }
 
 
-/* =========================================================
-   SMARTPHONE BASSO
-========================================================= */
+/* =========================
+   SCHERMI BASSI
+========================= */
 
 @media (max-height: 680px) and (max-width: 520px) {
 
     .page {
-
         padding:
             30px
             15px;
@@ -527,7 +419,6 @@ body::before {
 
 
     .card {
-
         padding:
             38px
             22px
@@ -536,13 +427,11 @@ body::before {
 
 
     .intro {
-
         margin-bottom: 18px;
     }
 
 
     .text p {
-
         font-size: 1.18rem;
 
         line-height: 1.48;
@@ -552,7 +441,6 @@ body::before {
 
 
     .ending {
-
         margin-top: 20px !important;
 
         padding-top: 18px;
@@ -560,7 +448,6 @@ body::before {
 
 
     .black-rose {
-
         width: 42px;
         height: 56px;
 
@@ -570,16 +457,15 @@ body::before {
 }
 
 
-/* =========================================================
+/* =========================
    RIDUZIONE ANIMAZIONI
-========================================================= */
+========================= */
 
 @media (prefers-reduced-motion: reduce) {
 
     *,
     *::before,
     *::after {
-
         animation-duration: 0.01ms !important;
 
         animation-iteration-count: 1 !important;
@@ -587,3 +473,4 @@ body::before {
         transition-duration: 0.01ms !important;
     }
 }
+```
