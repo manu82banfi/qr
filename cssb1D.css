@@ -1,0 +1,613 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap');
+
+
+:root {
+
+    --wine: #7a2430;
+    --wine-dark: #43151d;
+    --rose: #b85c68;
+
+    --paper: #fffdf7;
+    --ink: #171314;
+    --gold: #c39a62;
+
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+
+html,
+body {
+
+    width: 100%;
+    height: 100%;
+
+}
+
+
+/* =====================================================
+   SFONDO
+===================================================== */
+
+body {
+
+    overflow: hidden;
+
+    color: var(--ink);
+
+    font-family:
+        'Cormorant Garamond',
+        Georgia,
+        serif;
+
+    background-color: #241014;
+
+    animation:
+        backgroundPulse 4s ease-in-out infinite;
+
+}
+
+
+@keyframes backgroundPulse {
+
+    0%   { background-color: #241014; }
+    50%  { background-color: #71323e; }
+    100% { background-color: #241014; }
+
+}
+
+
+/* =====================================================
+   TEXTURE
+===================================================== */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.025;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+
+    z-index: 0;
+
+}
+
+
+/* =====================================================
+   PAGINA
+===================================================== */
+
+.page {
+
+    width: 100%;
+    height: 100svh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    z-index: 2;
+
+    padding:
+        max(34px, env(safe-area-inset-top))
+        max(20px, env(safe-area-inset-right))
+        max(34px, env(safe-area-inset-bottom))
+        max(20px, env(safe-area-inset-left));
+
+}
+
+
+/* =====================================================
+   BIGLIETTINO
+===================================================== */
+
+.card {
+
+    position: relative;
+
+    width: min(100%, 650px);
+
+    padding:
+        58px
+        42px
+        78px;
+
+    text-align: center;
+
+    background-color: #ecf2bd;
+
+    background-image:
+
+        linear-gradient(
+            rgba(166, 188, 224, 0.25) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(166, 188, 224, 0.25) 1px,
+            transparent 1px
+        );
+
+    background-size: 24px 24px;
+
+    background-position:
+        0 0,
+        0 0;
+
+    border:
+        1px solid
+        rgba(195, 154, 98, 0.8);
+
+    border-radius: 3px;
+
+    box-shadow:
+
+        0 25px 70px
+        rgba(0, 0, 0, 0.42),
+
+        0 4px 12px
+        rgba(0, 0, 0, 0.18);
+
+}
+
+
+/* =====================================================
+   TESTO — GENERALE
+===================================================== */
+
+.text {
+
+    max-width: 535px;
+    margin: 0 auto;
+
+}
+
+
+.text p {
+
+    margin: 0;
+
+    font-size:
+        clamp(1.28rem, 4.5vw, 1.55rem);
+
+    line-height: 1.62;
+
+    font-weight: 400;
+
+    letter-spacing: 0.01em;
+
+}
+
+
+.text em {
+
+    color: var(--wine);
+    font-weight: 400;
+    font-style: italic;
+
+}
+
+
+/* =====================================================
+   FRASE INIZIALE
+   Appare subito, leggermente più grande.
+===================================================== */
+
+.intro {
+
+    font-size:
+        clamp(1.55rem, 5.6vw, 1.95rem) !important;
+
+    line-height: 1.35 !important;
+
+    font-weight: 500;
+
+    color: var(--wine-dark);
+
+    letter-spacing: 0.005em;
+
+    margin-bottom: 22px !important;
+
+}
+
+
+/* =====================================================
+   PRIMO PARAGRAFO — RIVELAZIONE LETTERA PER LETTERA
+
+   Le lettere sono già tutte al loro posto, ma invisibili.
+   Il JS accende una alla volta aggiungendo la classe .on.
+===================================================== */
+
+.typed-line {
+
+    text-align: center;
+
+    /* Permette al browser di gestire correttamente
+       gli spazi e gli a capo tra le parole. */
+
+    white-space: pre-wrap;
+
+    overflow-wrap: break-word;
+
+}
+
+
+/* Ogni parola è un blocco inseparabile:
+   il browser può andare a capo tra una parola
+   e l'altra, ma non in mezzo a una parola. */
+
+.typewriter .word {
+
+    display: inline-block;
+
+    white-space: nowrap;
+
+}
+
+
+/* Ogni lettera è invisibile all'inizio. */
+
+.typewriter .letter {
+
+    opacity: 0;
+
+    /* MODIFICA QUI: morbidezza della comparsa di ogni lettera.
+       0.10s = netta, 0.18s = morbida, 0.30s = molto sfumata. */
+
+    transition:
+        opacity 0.18s ease;
+
+}
+
+
+.typewriter .letter.on {
+
+    opacity: 1;
+
+}
+
+
+/* =====================================================
+   CUORE CENTRALE
+   Nascosto all'inizio, appare quando ha la classe .visible
+===================================================== */
+
+.heart-divider {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+    margin:
+        28px
+        0
+        25px;
+
+    opacity: 0;
+    transform: scale(0.85);
+
+    transition:
+        opacity 0.55s ease,
+        transform 0.55s cubic-bezier(0.2, 0.9, 0.3, 1.4);
+
+}
+
+
+.heart-divider.visible {
+
+    opacity: 1;
+    transform: scale(1);
+
+}
+
+
+.heart-divider svg {
+
+    display: block;
+
+    /* MODIFICA QUI: dimensione del cuore. */
+
+    width: 44px;
+    height: 40px;
+
+    overflow: visible;
+
+    filter:
+        drop-shadow(
+            0 2px 2px
+            rgba(58, 3, 12, 0.35)
+        )
+        drop-shadow(
+            0 1px 1px
+            rgba(0, 0, 0, 0.15)
+        );
+
+}
+
+
+/* =====================================================
+   PARAGRAFO FINALE
+   Nascosto all'inizio, appare con .visible
+===================================================== */
+
+.ending-block {
+
+    opacity: 0;
+    transform: translateY(6px);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+
+}
+
+
+.ending-block.visible {
+
+    opacity: 1;
+    transform: translateY(0);
+
+}
+
+
+.ending {
+
+    padding:
+        0
+        10px
+        5px;
+
+    color: var(--wine-dark);
+
+    font-weight: 400;
+
+}
+
+
+/* =====================================================
+   ROSA NERA
+===================================================== */
+
+.black-rose {
+
+    position: absolute;
+
+    right: 18px;
+    bottom: 5px;
+
+    width: 58px;
+    height: 76px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform:
+        rotate(-5deg)
+        translateY(8px);
+
+    filter:
+        drop-shadow(
+            0 2px 3px
+            rgba(0, 0, 0, 0.18)
+        );
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+
+}
+
+
+.black-rose.visible {
+
+    opacity: 0.90;
+
+    transform:
+        rotate(-5deg)
+        translateY(0);
+
+}
+
+
+.black-rose svg {
+
+    display: block;
+    width: 100%;
+    height: 100%;
+
+}
+
+
+/* =====================================================
+   SMARTPHONE
+===================================================== */
+
+@media (max-width: 520px) {
+
+    .page {
+
+        padding:
+            34px 18px;
+
+    }
+
+    .card {
+
+        width: 100%;
+        max-width: 390px;
+
+        padding:
+            46px
+            23px
+            79px;
+
+    }
+
+    .text {
+
+        max-width: 100%;
+
+    }
+
+    .text p {
+
+        font-size: 1.28rem;
+        line-height: 1.58;
+
+    }
+
+    .intro {
+
+        font-size: 1.5rem !important;
+        margin-bottom: 18px !important;
+
+    }
+
+    .heart-divider {
+
+        margin:
+            26px
+            0
+            24px;
+
+    }
+
+    .heart-divider svg {
+
+        width: 40px;
+        height: 36px;
+
+    }
+
+    .ending {
+
+        padding:
+            0
+            8px
+            5px;
+
+    }
+
+    .black-rose {
+
+        right: 12px;
+        bottom: 1px;
+
+        width: 48px;
+        height: 64px;
+
+    }
+
+}
+
+
+/* =====================================================
+   SCHERMI BASSI
+===================================================== */
+
+@media (max-height: 680px) and (max-width: 520px) {
+
+    .page {
+
+        padding:
+            25px 15px;
+
+    }
+
+    .card {
+
+        padding:
+            36px
+            21px
+            71px;
+
+    }
+
+    .text p {
+
+        font-size: 1.18rem;
+        line-height: 1.48;
+
+    }
+
+    .intro {
+
+        font-size: 1.35rem !important;
+        margin-bottom: 14px !important;
+
+    }
+
+    .heart-divider {
+
+        margin:
+            20px
+            0
+            18px;
+
+    }
+
+    .heart-divider svg {
+
+        width: 34px;
+        height: 30px;
+
+    }
+
+    .black-rose {
+
+        width: 42px;
+        height: 56px;
+
+        right: 9px;
+        bottom: 0;
+
+    }
+
+}
+
+
+/* =====================================================
+   RIDUZIONE ANIMAZIONI
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+
+    }
+
+}

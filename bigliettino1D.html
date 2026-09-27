@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <meta
+        name="theme-color"
+        content="#43151d"
+    >
+
+    <title>Quel giorno 1D</title>
+
+    <link rel="stylesheet" href="cssb1D.css">
+
+</head>
+
+
+<body>
+
+    <main class="page">
+
+        <section class="card">
+
+            <div class="text">
+
+
+                <!-- ============================================
+                     FRASE INIZIALE
+                     Appare subito, leggermente più grande.
+                ============================================= -->
+
+                <p class="intro">
+                    Qui siamo usciti la prima volta.
+                </p>
+
+
+                <!-- ============================================
+                     PRIMO PARAGRAFO (rivelazione lettera per lettera)
+
+                     Il contenuto viene riempito via JavaScript:
+                     ogni parola è uno <span class="word">, e ogni
+                     lettera dentro è uno <span class="letter">.
+                     Le lettere sono già al loro posto ma invisibili.
+                     Il JS le accende una alla volta.
+                ============================================= -->
+
+                <p class="typed-line">
+                    <span id="typed" class="typewriter"></span>
+                </p>
+
+
+                <!-- ============================================
+                     CUORE CENTRALE
+                     Nascosto all'inizio, appare dopo il testo.
+                ============================================= -->
+
+                <div
+                    class="heart-divider"
+                    id="heart"
+                    aria-hidden="true"
+                >
+
+                    <svg
+                        viewBox="0 0 100 90"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+
+                        <!-- Corpo del cuore: rosso acceso -->
+
+                        <path
+                            d="
+                                M50 82
+                                C45 77 12 57 8 34
+                                C5 17 16 7 30 7
+                                C39 7 46 12 50 20
+                                C54 12 61 7 70 7
+                                C84 7 95 17 92 34
+                                C88 57 55 77 50 82
+                                Z
+                            "
+                            fill="#d81f36"
+                        />
+
+
+                        <!-- Ombra interna in basso a destra -->
+
+                        <path
+                            d="
+                                M50 82
+                                C45 77 12 57 8 34
+                                C5 17 16 7 30 7
+                                C39 7 46 12 50 20
+                                C54 12 61 7 70 7
+                                C84 7 95 17 92 34
+                                C88 57 55 77 50 82
+                                Z
+                            "
+                            fill="url(#heartShade)"
+                        />
+
+
+                        <!-- Riflesso di luce in alto a sinistra -->
+
+                        <path
+                            d="
+                                M28 15
+                                C18 18 14 27 15 36
+                                C22 30 30 24 38 21
+                                C36 17 32 14 28 15
+                                Z
+                            "
+                            fill="#ffffff"
+                            opacity="0.28"
+                        />
+
+
+                        <defs>
+
+                            <radialGradient
+                                id="heartShade"
+                                cx="0.35"
+                                cy="0.3"
+                                r="0.85"
+                            >
+
+                                <stop
+                                    offset="0%"
+                                    stop-color="#ffffff"
+                                    stop-opacity="0"
+                                />
+
+                                <stop
+                                    offset="65%"
+                                    stop-color="#8a0e1e"
+                                    stop-opacity="0.15"
+                                />
+
+                                <stop
+                                    offset="100%"
+                                    stop-color="#3a030c"
+                                    stop-opacity="0.55"
+                                />
+
+                            </radialGradient>
+
+                        </defs>
+
+                    </svg>
+
+                </div>
+
+
+                <!-- ============================================
+                     PARAGRAFO FINALE
+                     Nascosto all'inizio, appare dopo il cuore.
+                ============================================= -->
+
+                <div
+                    class="ending-block"
+                    id="endingBlock"
+                >
+
+                    <p class="ending">
+                        Quel giorno ero agitato come poche volte mi è successo...
+                        e posso dire che è stata una delle sensazioni migliori
+                        che potessi provare.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ROSA NERA -->
+
+            <div
+                class="black-rose"
+                id="blackRose"
+                aria-hidden="true"
+            >
+
+                <svg
+                    viewBox="0 0 100 130"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+
+                    <!-- Gambo -->
+
+                    <path
+                        d="M50 65 C48 82 51 100 45 124"
+                        fill="none"
+                        stroke="#111"
+                        stroke-width="2.2"
+                        stroke-linecap="round"
+                    />
+
+
+                    <!-- Foglia sinistra -->
+
+                    <path
+                        d="
+                            M48 96
+                            C37 87 27 90 25 99
+                            C33 102 41 101 48 96Z
+                        "
+                        fill="#111"
+                    />
+
+
+                    <!-- Foglia destra -->
+
+                    <path
+                        d="
+                            M48 108
+                            C58 99 67 102 70 110
+                            C61 113 54 112 48 108Z
+                        "
+                        fill="#111"
+                    />
+
+
+                    <!-- Rosa esterna -->
+
+                    <path
+                        d="
+                            M50 17
+                            C36 7 19 16 21 32
+                            C8 38 14 55 28 57
+                            C27 72 45 79 55 67
+                            C70 73 83 61 76 48
+                            C89 37 78 20 63 23
+                            C61 10 52 9 50 17Z
+                        "
+                        fill="#111"
+                    />
+
+
+                    <!-- Petali interni -->
+
+                    <path
+                        d="
+                            M50 22
+                            C40 16 31 22 35 31
+                            C25 31 24 41 34 44
+                            C28 51 37 59 45 53
+                            C48 63 59 60 58 51
+                            C68 55 74 46 66 40
+                            C74 34 66 25 58 29
+                            C59 20 53 18 50 22Z
+                        "
+                        fill="#252525"
+                    />
+
+
+                    <!-- Centro -->
+
+                    <path
+                        d="
+                            M50 28
+                            C43 25 39 31 44 36
+                            C37 39 41 47 48 45
+                            C49 52 58 50 57 43
+                            C64 42 63 34 57 34
+                            C58 28 53 26 50 28Z
+                        "
+                        fill="#050505"
+                    />
+
+                </svg>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+    /* ==========================================================
+       CONFIGURAZIONE TEMPI
+       Modifica solo i valori qui sotto.
+       Tutti i tempi sono in millisecondi (1000 ms = 1 secondo).
+    ========================================================== */
+
+    const DELAY_BEFORE_TYPING = 1000;   // MODIFICA QUI: attesa prima di iniziare ad accendere le lettere
+    const TYPING_SPEED        = 40;     // MODIFICA QUI: millisecondi tra una lettera e la successiva
+    const DELAY_BEFORE_HEART  = 400;    // MODIFICA QUI: attesa tra fine scrittura e comparsa del cuore
+    const DELAY_BEFORE_ENDING = 500;    // MODIFICA QUI: attesa tra comparsa del cuore e paragrafo finale
+
+
+    /* ==========================================================
+       TESTO DA RIVELARE (primo paragrafo)
+       Modifica qui il contenuto.
+    ========================================================== */
+
+    const TEXT_TO_TYPE =
+        "Sento ancora quell'emozione sotto pelle, " +
+        "quella sensazione di gioia mista a paura, " +
+        "quel senso di vertigine e timore.";
+
+
+    /* ==========================================================
+       MOTORE — da qui in giù meglio non toccare
+    ========================================================== */
+
+    const typedEl = document.getElementById("typed");
+    const heartEl = document.getElementById("heart");
+    const endEl   = document.getElementById("endingBlock");
+    const roseEl  = document.getElementById("blackRose");
+
+    const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+
+    if (reduceMotion) {
+
+        /* --- Nessuna animazione: mostriamo tutto subito. --- */
+
+        typedEl.textContent = TEXT_TO_TYPE;
+
+        heartEl.classList.add("visible");
+        endEl.classList.add("visible");
+        roseEl.classList.add("visible");
+
+    } else {
+
+        /* --- 1. Pre-costruiamo tutte le parole e le lettere,
+                  già al loro posto finale, ma invisibili. --- */
+
+        prepareLetters(TEXT_TO_TYPE);
+
+        /* --- 2. Dopo il delay iniziale, iniziamo ad accenderle. --- */
+
+        setTimeout(startReveal, DELAY_BEFORE_TYPING);
+
+    }
+
+
+    /* --- Trasforma la stringa in una serie di parole,
+           ognuna contenente <span class="letter">.
+           Così il browser può andare a capo correttamente
+           tra una parola e l'altra (mai in mezzo a una parola). --- */
+
+    function prepareLetters(text) {
+
+        const frag = document.createDocumentFragment();
+
+        /* Dividiamo il testo in parole (lo spazio è il separatore). */
+
+        const words = text.split(" ");
+
+        words.forEach((word, index) => {
+
+            /* Contenitore della parola: non si spezza mai. */
+
+            const wordSpan = document.createElement("span");
+            wordSpan.className = "word";
+
+            /* Aggiungiamo ogni lettera della parola. */
+
+            for (let i = 0; i < word.length; i++) {
+
+                const letterSpan = document.createElement("span");
+                letterSpan.className = "letter";
+                letterSpan.textContent = word.charAt(i);
+                wordSpan.appendChild(letterSpan);
+
+            }
+
+            frag.appendChild(wordSpan);
+
+            /* Aggiungiamo lo spazio DOPO la parola,
+               tranne che per l'ultima parola.
+               È uno spazio normale, quindi il browser
+               può andare a capo qui. */
+
+            if (index < words.length - 1) {
+
+                frag.appendChild(document.createTextNode(" "));
+
+            }
+
+        });
+
+        typedEl.appendChild(frag);
+
+    }
+
+
+    /* --- Accende le lettere una alla volta --- */
+
+    function startReveal() {
+
+        const letters = typedEl.querySelectorAll(".letter");
+
+        let i = 0;
+
+        function step() {
+
+            if (i < letters.length) {
+
+                letters[i].classList.add("on");
+                i++;
+
+                setTimeout(step, TYPING_SPEED);
+
+            } else {
+
+                onRevealComplete();
+
+            }
+
+        }
+
+        step();
+
+    }
+
+
+    function onRevealComplete() {
+
+        /* --- Cuore --- */
+
+        setTimeout(() => {
+
+            heartEl.classList.add("visible");
+
+
+            /* --- Paragrafo finale + rosa --- */
+
+            setTimeout(() => {
+
+                endEl.classList.add("visible");
+                roseEl.classList.add("visible");
+
+            }, DELAY_BEFORE_ENDING);
+
+        }, DELAY_BEFORE_HEART);
+
+    }
+
+    </script>
+
+</body>
+
+</html>
