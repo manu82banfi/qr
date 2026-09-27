@@ -6,11 +6,9 @@
 
     --wine: #7a2430;
     --wine-dark: #43151d;
-    --rose: #b85c68;
 
     --paper: #fffdf7;
     --ink: #171314;
-    --gold: #c39a62;
 
 }
 
@@ -34,7 +32,6 @@ html,
 body {
 
     width: 100%;
-
     height: 100%;
 
 }
@@ -55,7 +52,12 @@ body {
         Georgia,
         serif;
 
-    background-color: #241014;
+    /*
+        Tonalità leggermente più chiara
+        rispetto al primo biglietto.
+    */
+
+    background-color: #35171d;
 
     animation:
         backgroundPulse 4s ease-in-out infinite;
@@ -71,19 +73,19 @@ body {
 
     0% {
 
-        background-color: #241014;
+        background-color: #35171d;
 
     }
 
     50% {
 
-        background-color: #71323e;
+        background-color: #8c4653;
 
     }
 
     100% {
 
-        background-color: #241014;
+        background-color: #35171d;
 
     }
 
@@ -91,7 +93,7 @@ body {
 
 
 /* =====================================================
-   TEXTURE
+   TEXTURE LEGGERISSIMA
 ===================================================== */
 
 body::before {
@@ -153,10 +155,22 @@ body::before {
 
     width: min(100%, 650px);
 
+    /*
+        Più spazio verticale:
+        il testo è breve e deve respirare.
+    */
+
+    min-height: 330px;
+
     padding:
-        58px
-        42px
-        78px;
+        70px
+        50px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
 
     text-align: center;
 
@@ -175,7 +189,8 @@ body::before {
             transparent 1px
         );
 
-    background-size: 24px 24px;
+    background-size:
+        24px 24px;
 
     background-position:
         0 0,
@@ -204,21 +219,25 @@ body::before {
 
 .text {
 
-    max-width: 535px;
+    width: 100%;
+
+    max-width: 500px;
 
     margin: 0 auto;
+
+    text-align: center;
 
 }
 
 
 .text p {
 
-    margin: 0;
+    margin: 0 0 20px;
 
     font-size:
-        clamp(1.28rem, 4.5vw, 1.55rem);
+        clamp(1.35rem, 4.5vw, 1.60rem);
 
-    line-height: 1.62;
+    line-height: 1.55;
 
     font-weight: 400;
 
@@ -227,85 +246,36 @@ body::before {
 }
 
 
-.text em {
+.text p:first-child {
 
     color: var(--wine);
 
-    font-weight: 400;
+    font-size:
+        clamp(1.50rem, 5vw, 1.80rem);
 
-    font-style: italic;
+    font-weight: 500;
+
+    margin-bottom: 24px;
+
+}
+
+
+.text p:last-child {
+
+    margin-bottom: 0;
 
 }
 
 
 /* =====================================================
-   CUORE CENTRALE
-===================================================== */
-
-.heart-divider {
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    width: 100%;
-
-    /*
-        Distanza dal testo sopra
-        e dal testo sotto.
-    */
-
-    margin:
-        28px
-        0
-        25px;
-
-}
-
-
-/*
-    SVG DEL CUORE
-*/
-
-.heart-divider svg {
-
-    display: block;
-
-    width: 30px;
-
-    height: 27px;
-
-    overflow: visible;
-
-    /*
-        Leggerissima profondità.
-    */
-
-    filter:
-        drop-shadow(
-            0 1px 1px
-            rgba(67, 21, 29, 0.25)
-        );
-
-}
-
-
-/* =====================================================
-   PARAGRAFO FINALE
+   FRASE FINALE
 ===================================================== */
 
 .ending {
 
-    padding:
-        0
-        10px
-        5px;
-
     color: var(--wine-dark);
 
-    font-weight: 400;
+    font-style: italic;
 
 }
 
@@ -318,15 +288,6 @@ body::before {
 
     position: absolute;
 
-    right: 18px;
-
-    /*
-        La rosa viene mantenuta
-        molto vicina al bordo inferiore.
-    */
-
-    bottom: 5px;
-
     width: 58px;
 
     height: 76px;
@@ -334,9 +295,6 @@ body::before {
     opacity: 0.90;
 
     pointer-events: none;
-
-    transform:
-        rotate(-5deg);
 
     filter:
         drop-shadow(
@@ -354,6 +312,38 @@ body::before {
     width: 100%;
 
     height: 100%;
+
+}
+
+
+/* =====================================================
+   ROSA — ALTO SINISTRA
+===================================================== */
+
+.black-rose-top {
+
+    top: 12px;
+
+    left: 15px;
+
+    transform:
+        rotate(0deg);
+
+}
+
+
+/* =====================================================
+   ROSA — BASSO DESTRA
+===================================================== */
+
+.black-rose-bottom {
+
+    right: 15px;
+
+    bottom: 5px;
+
+    transform:
+        rotate(360deg);
 
 }
 
@@ -379,10 +369,11 @@ body::before {
 
         max-width: 390px;
 
+        min-height: 330px;
+
         padding:
-            46px
-            23px
-            79px;
+            62px
+            24px;
 
     }
 
@@ -398,65 +389,51 @@ body::before {
 
         font-size: 1.28rem;
 
-        line-height: 1.58;
+        line-height: 1.55;
+
+        margin-bottom: 19px;
+
+    }
+
+
+    .text p:first-child {
+
+        font-size: 1.48rem;
+
+        line-height: 1.35;
+
+        margin-bottom: 23px;
 
     }
 
 
     /* ---------------------------------------------
-       CUORE SMARTPHONE
-    --------------------------------------------- */
-
-    .heart-divider {
-
-        margin:
-            26px
-            0
-            24px;
-
-    }
-
-
-    .heart-divider svg {
-
-        width: 29px;
-
-        height: 26px;
-
-    }
-
-
-    /* ---------------------------------------------
-       TESTO FINALE
-    --------------------------------------------- */
-
-    .ending {
-
-        padding:
-            0
-            8px
-            5px;
-
-    }
-
-
-    /* ---------------------------------------------
-       ROSA SMARTPHONE
+       ROSE
     --------------------------------------------- */
 
     .black-rose {
 
-        right: 12px;
-
-        /*
-            Più bassa rispetto alla versione originale.
-        */
-
-        bottom: 1px;
-
         width: 48px;
 
         height: 64px;
+
+    }
+
+
+    .black-rose-top {
+
+        top: 8px;
+
+        left: 10px;
+
+    }
+
+
+    .black-rose-bottom {
+
+        right: 10px;
+
+        bottom: 2px;
 
     }
 
@@ -480,10 +457,11 @@ body::before {
 
     .card {
 
+        min-height: 300px;
+
         padding:
-            36px
-            21px
-            71px;
+            55px
+            21px;
 
     }
 
@@ -494,24 +472,16 @@ body::before {
 
         line-height: 1.48;
 
-    }
-
-
-    .heart-divider {
-
-        margin:
-            20px
-            0
-            18px;
+        margin-bottom: 16px;
 
     }
 
 
-    .heart-divider svg {
+    .text p:first-child {
 
-        width: 25px;
+        font-size: 1.36rem;
 
-        height: 23px;
+        margin-bottom: 19px;
 
     }
 
@@ -522,9 +492,23 @@ body::before {
 
         height: 56px;
 
-        right: 9px;
+    }
 
-        bottom: 0;
+
+    .black-rose-top {
+
+        top: 7px;
+
+        left: 8px;
+
+    }
+
+
+    .black-rose-bottom {
+
+        right: 8px;
+
+        bottom: 1px;
 
     }
 
