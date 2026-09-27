@@ -1,0 +1,802 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap');
+
+
+:root {
+
+    --wine: #7a2430;
+    --wine-dark: #43151d;
+
+    --paper: #fffdf7;
+    --ink: #171314;
+
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+
+    box-sizing: border-box;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+html,
+body {
+
+    width: 100%;
+    height: 100%;
+
+}
+
+
+/* =====================================================
+   SFONDO
+===================================================== */
+
+body {
+
+    overflow: hidden;
+
+    color: var(--ink);
+
+    font-family:
+        'Cormorant Garamond',
+        Georgia,
+        serif;
+
+    background-color: #4d252c;
+
+    animation:
+        backgroundPulse 4s ease-in-out infinite;
+
+}
+
+
+/* =====================================================
+   PULSAZIONE SFONDO
+===================================================== */
+
+@keyframes backgroundPulse {
+
+    0% {
+
+        background-color: #7a414b;
+
+    }
+
+    50% {
+
+        background-color: #cf6d7d;
+
+    }
+
+    100% {
+
+        background-color: #7a414b;
+
+    }
+
+}
+
+
+/* =====================================================
+   TEXTURE LEGGERISSIMA
+===================================================== */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.025;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+
+    z-index: 0;
+
+}
+
+
+/* =====================================================
+   PAGINA
+===================================================== */
+
+.page {
+
+    width: 100%;
+
+    height: 100svh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    z-index: 2;
+
+    padding:
+        max(34px, env(safe-area-inset-top))
+        max(20px, env(safe-area-inset-right))
+        max(34px, env(safe-area-inset-bottom))
+        max(20px, env(safe-area-inset-left));
+
+}
+
+
+/* =====================================================
+   BIGLIETTINO
+===================================================== */
+
+.card {
+
+    position: relative;
+
+    width: min(100%, 650px);
+
+    min-height: 330px;
+
+    padding:
+        70px
+        50px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background-color: #ecf2bd;
+
+    background-image:
+
+        linear-gradient(
+            rgba(166, 188, 224, 0.25) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(166, 188, 224, 0.25) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        24px 24px;
+
+    background-position:
+        0 0,
+        0 0;
+
+    border:
+        1px solid
+        rgba(195, 154, 98, 0.8);
+
+    border-radius: 3px;
+
+    box-shadow:
+
+        0 25px 70px
+        rgba(0, 0, 0, 0.42),
+
+        0 4px 12px
+        rgba(0, 0, 0, 0.18);
+
+    overflow: hidden;
+
+}
+
+
+/* =====================================================
+   CUORE DI SFONDO — GRANDE, PANCIUTO E ROSSO
+===================================================== */
+
+.card::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 320px;
+    height: 290px;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(220, 40, 60, 0.55) 0%,
+            rgba(200, 30, 55, 0.40) 35%,
+            rgba(170, 20, 45, 0.20) 65%,
+            rgba(122, 36, 48, 0.00) 100%
+        );
+
+    -webkit-mask-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90'%3E%3Cpath d='M50 88 C50 88 4 58 4 30 C4 12 18 4 30 4 C40 4 47 11 50 18 C53 11 60 4 70 4 C82 4 96 12 96 30 C96 58 50 88 50 88Z' fill='black'/%3E%3C/svg%3E");
+
+    mask-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90'%3E%3Cpath d='M50 88 C50 88 4 58 4 30 C4 12 18 4 30 4 C40 4 47 11 50 18 C53 11 60 4 70 4 C82 4 96 12 96 30 C96 58 50 88 50 88Z' fill='black'/%3E%3C/svg%3E");
+
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+
+    -webkit-mask-size: contain;
+    mask-size: contain;
+
+    -webkit-mask-position: center;
+    mask-position: center;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+}
+
+
+/* =====================================================
+   TESTO
+===================================================== */
+
+.text {
+
+    width: 100%;
+
+    max-width: 500px;
+
+    margin: 0 auto;
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 1;
+
+}
+
+
+.text p {
+
+    margin: 0 0 20px;
+
+    font-size:
+        clamp(1.35rem, 4.5vw, 1.60rem);
+
+    line-height: 1.55;
+
+    font-weight: 400;
+
+    letter-spacing: 0.01em;
+
+}
+
+
+/* =====================================================
+   FRASE INIZIALE — NERA
+===================================================== */
+
+.opening {
+
+    color: #000;
+
+    font-size:
+        clamp(1.50rem, 5vw, 1.80rem);
+
+    font-weight: 500;
+
+    margin-bottom: 24px;
+
+}
+
+
+.text p:last-child {
+
+    margin-bottom: 0;
+
+}
+
+
+/* =====================================================
+   FRASE FINALE — "TI AMO"
+   Appare dopo 5 secondi, rossa, pulsante,
+   stesso font delle altre scritte ma più grande
+   e più staccata dal paragrafo precedente.
+===================================================== */
+
+.ending {
+
+    color: #d40b0b;
+
+    font-family: inherit;
+
+    font-size:
+        clamp(2.1rem, 7vw, 2.9rem);
+
+    font-weight: 600;
+
+    font-style: normal;
+
+    letter-spacing: 0.03em;
+
+    line-height: 1.2;
+
+    margin-top: 40px;
+
+    /* Stato iniziale: invisibile */
+
+    opacity: 0;
+
+    transform: scale(0.9);
+
+    /* Delay di 5s + animazione pulsante infinita */
+
+    animation:
+        fadeInTiAmo 0.9s ease-out 5s forwards,
+        pulseTiAmo 1.4s ease-in-out 5.9s infinite;
+
+}
+
+
+/* Comparsa graduale dopo 5 secondi */
+
+@keyframes fadeInTiAmo {
+
+    0% {
+
+        opacity: 0;
+
+        transform: scale(0.9);
+
+        text-shadow:
+            0 0 0 rgba(212, 11, 11, 0);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+        text-shadow:
+            0 0 18px rgba(212, 11, 11, 0.45),
+            0 0 34px rgba(212, 11, 11, 0.20);
+
+    }
+
+}
+
+
+/* Pulsazione rossa infinita */
+
+@keyframes pulseTiAmo {
+
+    0% {
+
+        transform: scale(1);
+
+        text-shadow:
+            0 0 18px rgba(212, 11, 11, 0.45),
+            0 0 34px rgba(212, 11, 11, 0.20);
+
+    }
+
+    50% {
+
+        transform: scale(1.08);
+
+        text-shadow:
+            0 0 26px rgba(212, 11, 11, 0.75),
+            0 0 48px rgba(212, 11, 11, 0.45),
+            0 0 70px rgba(212, 11, 11, 0.25);
+
+    }
+
+    100% {
+
+        transform: scale(1);
+
+        text-shadow:
+            0 0 18px rgba(212, 11, 11, 0.45),
+            0 0 34px rgba(212, 11, 11, 0.20);
+
+    }
+
+}
+
+
+/* =====================================================
+   ROSA NERA
+===================================================== */
+
+.black-rose {
+
+    position: absolute;
+
+    width: 58px;
+
+    height: 76px;
+
+    opacity: 0.90;
+
+    pointer-events: none;
+
+    filter:
+        drop-shadow(
+            0 2px 3px
+            rgba(0, 0, 0, 0.18)
+        );
+
+}
+
+
+.black-rose svg {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+}
+
+
+/* =====================================================
+   ROSA — ALTO SINISTRA
+===================================================== */
+
+.black-rose-top {
+
+    top: 12px;
+
+    left: 15px;
+
+    transform:
+        rotate(0deg);
+
+}
+
+
+/* =====================================================
+   ROSA — ALTO DESTRA
+===================================================== */
+
+.black-rose-top-right {
+
+    top: 12px;
+
+    right: 15px;
+
+    transform:
+        rotate(0deg);
+
+}
+
+
+/* =====================================================
+   ROSA — BASSO DESTRA
+===================================================== */
+
+.black-rose-bottom {
+
+    right: 15px;
+
+    bottom: 5px;
+
+    transform:
+        rotate(360deg);
+
+}
+
+
+/* =====================================================
+   ROSA — BASSO SINISTRA
+===================================================== */
+
+.black-rose-bottom-left {
+
+    left: 15px;
+
+    bottom: 5px;
+
+    transform:
+        rotate(0deg);
+
+}
+
+
+/* =====================================================
+   SMARTPHONE
+===================================================== */
+
+@media (max-width: 520px) {
+
+
+    .page {
+
+        padding:
+            34px 18px;
+
+    }
+
+
+    .card {
+
+        width: 100%;
+
+        max-width: 390px;
+
+        min-height: 330px;
+
+        padding:
+            62px
+            24px;
+
+    }
+
+
+    .text {
+
+        max-width: 100%;
+
+    }
+
+
+    .text p {
+
+        font-size: 1.28rem;
+
+        line-height: 1.55;
+
+        margin-bottom: 19px;
+
+    }
+
+
+    .opening {
+
+        font-size: 1.48rem;
+
+        line-height: 1.35;
+
+        margin-bottom: 23px;
+
+    }
+
+
+    .ending {
+
+        font-size: clamp(1.9rem, 8.5vw, 2.5rem);
+
+        margin-top: 34px;
+
+    }
+
+
+    /* ---------------------------------------------
+       ROSE
+    --------------------------------------------- */
+
+    .black-rose {
+
+        width: 48px;
+
+        height: 64px;
+
+    }
+
+
+    .black-rose-top {
+
+        top: 8px;
+
+        left: 10px;
+
+    }
+
+
+    .black-rose-top-right {
+
+        top: 8px;
+
+        right: 10px;
+
+    }
+
+
+    .black-rose-bottom {
+
+        right: 10px;
+
+        bottom: 2px;
+
+    }
+
+
+    .black-rose-bottom-left {
+
+        left: 10px;
+
+        bottom: 2px;
+
+    }
+
+
+    /* ---------------------------------------------
+       CUORE
+    --------------------------------------------- */
+
+    .card::before {
+
+        width: 260px;
+
+        height: 235px;
+
+    }
+
+}
+
+
+/* =====================================================
+   SCHERMI BASSI
+===================================================== */
+
+@media (max-height: 680px) and (max-width: 520px) {
+
+
+    .page {
+
+        padding:
+            25px 15px;
+
+    }
+
+
+    .card {
+
+        min-height: 300px;
+
+        padding:
+            55px
+            21px;
+
+    }
+
+
+    .text p {
+
+        font-size: 1.18rem;
+
+        line-height: 1.48;
+
+        margin-bottom: 16px;
+
+    }
+
+
+    .opening {
+
+        font-size: 1.36rem;
+
+        margin-bottom: 19px;
+
+    }
+
+
+    .ending {
+
+        font-size: clamp(1.7rem, 8vw, 2.2rem);
+
+        margin-top: 28px;
+
+    }
+
+
+    .black-rose {
+
+        width: 42px;
+
+        height: 56px;
+
+    }
+
+
+    .black-rose-top {
+
+        top: 7px;
+
+        left: 8px;
+
+    }
+
+
+    .black-rose-top-right {
+
+        top: 7px;
+
+        right: 8px;
+
+    }
+
+
+    .black-rose-bottom {
+
+        right: 8px;
+
+        bottom: 1px;
+
+    }
+
+
+    .black-rose-bottom-left {
+
+        left: 8px;
+
+        bottom: 1px;
+
+    }
+
+
+    .card::before {
+
+        width: 220px;
+
+        height: 200px;
+
+    }
+
+}
+
+
+/* =====================================================
+   RIDUZIONE ANIMAZIONI
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+
+    }
+
+    /* Manteniamo visibile "Ti Amo" anche senza animazioni */
+
+    .ending {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+    }
+
+}

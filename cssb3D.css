@@ -1,0 +1,572 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap');
+
+
+:root {
+
+    --wine: #7a2430;
+    --wine-dark: #43151d;
+
+    --paper: #fffdf7;
+    --ink: #171314;
+
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+
+    box-sizing: border-box;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+html,
+body {
+
+    width: 100%;
+    height: 100%;
+
+}
+
+
+/* =====================================================
+   SFONDO
+===================================================== */
+
+body {
+
+    overflow: hidden;
+
+    color: var(--ink);
+
+    font-family:
+        'Cormorant Garamond',
+        Georgia,
+        serif;
+
+    /*
+        Tonalità più chiara
+        rispetto al secondo biglietto.
+    */
+
+    background-color: #492129;
+
+    animation:
+        backgroundPulse 4s ease-in-out infinite;
+
+}
+
+
+/* =====================================================
+   PULSAZIONE SFONDO
+===================================================== */
+
+@keyframes backgroundPulse {
+
+    0% {
+
+        background-color: #492129;
+
+    }
+
+    50% {
+
+        background-color: #b87581;
+
+    }
+
+    100% {
+
+        background-color: #492129;
+
+    }
+
+}
+
+
+/* =====================================================
+   TEXTURE LEGGERISSIMA
+===================================================== */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.025;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+
+    z-index: 0;
+
+}
+
+
+/* =====================================================
+   PAGINA
+===================================================== */
+
+.page {
+
+    width: 100%;
+
+    height: 100svh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    z-index: 2;
+
+    padding:
+        max(34px, env(safe-area-inset-top))
+        max(20px, env(safe-area-inset-right))
+        max(34px, env(safe-area-inset-bottom))
+        max(20px, env(safe-area-inset-left));
+
+}
+
+
+/* =====================================================
+   BIGLIETTINO
+===================================================== */
+
+.card {
+
+    position: relative;
+
+    width: min(100%, 650px);
+
+    /*
+        Più spazio verticale:
+        il testo è breve e deve respirare.
+    */
+
+    min-height: 330px;
+
+    padding:
+        70px
+        50px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background-color: #ecf2bd;
+
+    background-image:
+
+        linear-gradient(
+            rgba(166, 188, 224, 0.25) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(166, 188, 224, 0.25) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        24px 24px;
+
+    background-position:
+        0 0,
+        0 0;
+
+    border:
+        1px solid
+        rgba(195, 154, 98, 0.8);
+
+    border-radius: 3px;
+
+    box-shadow:
+
+        0 25px 70px
+        rgba(0, 0, 0, 0.42),
+
+        0 4px 12px
+        rgba(0, 0, 0, 0.18);
+
+}
+
+
+/* =====================================================
+   TESTO
+===================================================== */
+
+.text {
+
+    width: 100%;
+
+    max-width: 500px;
+
+    margin: 0 auto;
+
+    text-align: center;
+
+}
+
+
+.text p {
+
+    margin: 0 0 20px;
+
+    font-size:
+        clamp(1.35rem, 4.5vw, 1.60rem);
+
+    line-height: 1.55;
+
+    font-weight: 400;
+
+    letter-spacing: 0.01em;
+
+}
+
+
+.text p:first-child {
+
+    color: var(--wine);
+
+    font-size:
+        clamp(1.50rem, 5vw, 1.80rem);
+
+    font-weight: 500;
+
+    margin-bottom: 24px;
+
+}
+
+
+.text p:last-child {
+
+    margin-bottom: 0;
+
+}
+
+
+/* =====================================================
+   FRASE FINALE
+===================================================== */
+
+.ending {
+
+    color: var(--wine-dark);
+
+    font-style: italic;
+
+}
+
+
+/* =====================================================
+   ROSA NERA
+===================================================== */
+
+.black-rose {
+
+    position: absolute;
+
+    width: 58px;
+
+    height: 76px;
+
+    opacity: 0.90;
+
+    pointer-events: none;
+
+    filter:
+        drop-shadow(
+            0 2px 3px
+            rgba(0, 0, 0, 0.18)
+        );
+
+}
+
+
+.black-rose svg {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+}
+
+
+/* =====================================================
+   ROSA — ALTO SINISTRA
+===================================================== */
+
+.black-rose-top {
+
+    top: 12px;
+
+    left: 15px;
+
+    transform:
+        rotate(0deg);
+
+}
+
+
+/* =====================================================
+   ROSA — BASSO DESTRA
+===================================================== */
+
+.black-rose-bottom {
+
+    right: 15px;
+
+    bottom: 5px;
+
+    transform:
+        rotate(360deg);
+
+}
+
+
+/* =====================================================
+   ROSA — BASSO SINISTRA
+===================================================== */
+
+.black-rose-bottom-left {
+
+    left: 15px;
+
+    bottom: 5px;
+
+    transform:
+        rotate(0deg);
+
+}
+
+
+/* =====================================================
+   SMARTPHONE
+===================================================== */
+
+@media (max-width: 520px) {
+
+
+    .page {
+
+        padding:
+            34px 18px;
+
+    }
+
+
+    .card {
+
+        width: 100%;
+
+        max-width: 390px;
+
+        min-height: 330px;
+
+        padding:
+            62px
+            24px;
+
+    }
+
+
+    .text {
+
+        max-width: 100%;
+
+    }
+
+
+    .text p {
+
+        font-size: 1.28rem;
+
+        line-height: 1.55;
+
+        margin-bottom: 19px;
+
+    }
+
+
+    .text p:first-child {
+
+        font-size: 1.48rem;
+
+        line-height: 1.35;
+
+        margin-bottom: 23px;
+
+    }
+
+
+    /* ---------------------------------------------
+       ROSE
+    --------------------------------------------- */
+
+    .black-rose {
+
+        width: 48px;
+
+        height: 64px;
+
+    }
+
+
+    .black-rose-top {
+
+        top: 8px;
+
+        left: 10px;
+
+    }
+
+
+    .black-rose-bottom {
+
+        right: 10px;
+
+        bottom: 2px;
+
+    }
+
+
+    .black-rose-bottom-left {
+
+        left: 10px;
+
+        bottom: 2px;
+
+    }
+
+}
+
+
+/* =====================================================
+   SCHERMI BASSI
+===================================================== */
+
+@media (max-height: 680px) and (max-width: 520px) {
+
+
+    .page {
+
+        padding:
+            25px 15px;
+
+    }
+
+
+    .card {
+
+        min-height: 300px;
+
+        padding:
+            55px
+            21px;
+
+    }
+
+
+    .text p {
+
+        font-size: 1.18rem;
+
+        line-height: 1.48;
+
+        margin-bottom: 16px;
+
+    }
+
+
+    .text p:first-child {
+
+        font-size: 1.36rem;
+
+        margin-bottom: 19px;
+
+    }
+
+
+    .black-rose {
+
+        width: 42px;
+
+        height: 56px;
+
+    }
+
+
+    .black-rose-top {
+
+        top: 7px;
+
+        left: 8px;
+
+    }
+
+
+    .black-rose-bottom {
+
+        right: 8px;
+
+        bottom: 1px;
+
+    }
+
+
+    .black-rose-bottom-left {
+
+        left: 8px;
+
+        bottom: 1px;
+
+    }
+
+}
+
+
+/* =====================================================
+   RIDUZIONE ANIMAZIONI
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+
+    }
+
+}
